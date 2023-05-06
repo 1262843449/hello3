@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  </head>
+  <style>
+    .a button {
+      background-color: white;
+      border-radius: 10px;
+      border: none;
+      color: black;
+    }
+    .a {
+      position: absolute;
+      top: 75px;
+      right: 10px;
+    }
+    #main {
+      margin-top: 100px;
+      margin-left: 576px;
+    }
+
+    .box {
+      border: 1px gray solid;
+      border-radius: 10px;
+      height: 860px;
+      width: 100%;
+      background-color: skyblue;
+    }
+    #c {
+      background-color: blue !important;
+      color: white;
+    }
+    .k {
+      border: 1px gray solid;
+      border-radius: 10px;
+      height: 100px;
+      width: 200px;
+      background-color: white;
+      position: absolute;
+      left: 56px;
+      top: 217px;
+    }
+    .kk {
+      border: 1px gray solid;
+      border-radius: 10px;
+      height: 100px;
+      width: 200px;
+      background-color: white;
+      position: absolute;
+      left: 56px;
+      top: 340px;
+    }
+    .k p {
+      margin-left: 10px;
+    }
+    .k h1 {
+      margin-left: 10px;
+    }
+    .kk p {
+      margin-left: 10px;
+    }
+    .kk h1 {
+      margin-left: 10px;
+    }
+  </style>
+  <body>
+    <div class="box">
+      <h1>浏览量分析</h1>
+      <div class="k">
+        <p>PV(总浏览量)</p>
+        <h1>2170</h1>
+      </div>
+      <div class="kk">
+        <p>UV(总访问量)</p>
+        <h1>118</h1>
+      </div>
+      <div class="a">
+        <button id="a">今天</button>
+        <button id="b">昨天</button>
+        <button id="c">近7日</button>
+        <button id="d">近30日</button>
+      </div>
+      <div id="main" style="width: 1100px; height: 700px"></div>
+    </div>
+    <script src="./echarts.js"></script>
+    <script>
+      var chartDom = document.getElementById("main");
+      var myChart = echarts.init(chartDom);
+      var option;
+      option = {
+        tooltip: {
+          trigger: "axis",
+        },
+        legend: {},
+        toolbox: {
+          show: true,
+          feature: {
+            dataZoom: {
+              yAxisIndex: "none",
+            },
+            dataView: { readOnly: false },
+            magicType: { type: ["line", "bar"] },
+            restore: {},
+            saveAsImage: {},
+          },
+        },
+        xAxis: {
+          type: "category",
+          boundaryGap: false,
+          data: ["4.30", "5.1", "5.2", "5.3", "5.4", "5.5", "5.6"],
+        },
+        yAxis: {
+          type: "value",
+          axisLabel: {
+            formatter: "{value} .0K",
+          },
+        },
+        series: [
+          {
+            name: "pv",
+            type: "line",
+            data: [280, 250, 220, 640, 225, 305, 200],
+            markPoint: {
+              data: [
+                { type: "max", name: "Max" },
+                { type: "min", name: "Min" },
+              ],
+            },
+            markLine: {
+              data: [{ type: "average", name: "Avg" }],
+            },
+          },
+          {
+            name: "uv",
+            type: "line",
+            data: [20, 10, 10, 20, 7, 8, 8],
+            markPoint: {
+              data: [{ name: "周最低", value: -2, xAxis: 1, yAxis: -1.5 }],
+            },
+            markLine: {
+              data: [
+                { type: "average", name: "Avg" },
+                [
+                  {
+                    symbol: "none",
+                    x: "90%",
+                    yAxis: "max",
+                  },
+                  {
+                    symbol: "circle",
+                    label: {
+                      position: "start",
+                      formatter: "Max",
+                    },
+                    type: "max",
+                    name: "最高点",
+                  },
+                ],
+              ],
+            },
+          },
+        ],
+      };
+      option && myChart.setOption(option);
+      document.getElementById("b").addEventListener("click", function () {
+        window.location.replace("3.html"); //替换当前文档
+      });
+      document.getElementById("a").addEventListener("click", function () {
+        window.location.replace("2.html"); //替换当前文档
+      });
+      document.getElementById("d").addEventListener("click", function () {
+        window.location.replace("5.html"); //替换当前文档
+      });
+    </script>
+  </body>
+</html>

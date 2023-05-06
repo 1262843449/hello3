@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Swiper demo</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1"
+    />
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="../swiper-bundle.min.css" />
+
+    <!-- Demo styles -->
+    <style>
+      html,
+      body {
+        position: relative;
+        height: 100%;
+      }
+
+      body {
+        background: #eee;
+
+        font-size: 14px;
+        color: gray;
+        margin: 0;
+        padding: 0;
+      }
+
+      .swiper {
+        width: 2000px;
+        height: 100%;
+      }
+
+      .swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        background: #fff;
+
+        /* Center slide text vertically */
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+      }
+
+      .swiper-slide img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      body {
+        background: gray;
+        color: black;
+      }
+
+      .swiper {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .swiper-slide {
+        background-size: cover;
+        background-position: center;
+        margin-top: 10px;
+        height: 650px;
+        width: 500px;
+      }
+
+      .mySwiper2 {
+        height: 80%;
+        width: 50%;
+      }
+
+      .mySwiper {
+        height: 20%;
+        box-sizing: border-box;
+        padding: 10px 0;
+      }
+
+      .mySwiper .swiper-slide {
+        width: 25%;
+        height: 100%;
+        opacity: 0.4;
+      }
+
+      .mySwiper .swiper-slide-thumb-active {
+        opacity: 1;
+      }
+
+      .swiper-slide img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .swiper-button-next,
+      .swiper-button-prev {
+        position: absolute;
+        top: 50%;
+        width: 120px;
+        height: 100px;
+        margin-top: calc(0px - (var(--swiper-navigation-size) / 2));
+        z-index: 10;
+        cursor: pointer;
+        display: block;
+        color: white;
+        margin-left: 100px;
+        margin-top: -160px;
+      }
+      body {
+        background-color: black !important;
+      }
+      .w1 {
+        position: absolute;
+        top: 0px;
+        left: 30px;
+      }
+      .w11 {
+        position: absolute;
+        top: 125px;
+        left: 200px;
+        width: 100px;
+        height: 100px;
+        background-color: white;
+      }
+      .j {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 150px;
+        height: 80px;
+        background-color: pink;
+      }
+      .j1 {
+        position: absolute;
+        top: 9px;
+        left: 30px;
+      }
+      .an {
+        margin-left: 555px;
+      }
+      .an button {
+        height: 50px;
+        width: 100px;
+        margin-left: 10px;
+        background-color: gray;
+        border-radius: 10px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="an">
+      <button>视觉搜索</button>
+      <button>保存</button>
+      <button id="cha">查看图片</button>
+      <button>反馈</button>
+      <button>更多</button>
+    </div>
+
+    <!-- Swiper -->
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+    <div
+      style="--swiper-navigation-color: black; --swiper-pagination-color: black"
+      class="swiper mySwiper2"
+    >
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <div class="j"><p class="j1">我是图片1</p></div>
+          <img src="./images/nature-1.jpg" />
+        </div>
+
+        <div class="swiper-slide">
+          <div class="j"><p class="j1">我是图片2</p></div>
+          <img src="./images/nature-2.jpg" />
+        </div>
+        <div class="swiper-slide">
+          <div class="j"><p class="j1">我是图片3</p></div>
+          <img src="./images/nature-3.jpg" />
+        </div>
+        <div class="swiper-slide">
+          <div class="j"><p class="j1">我是图片4</p></div>
+          <img src="./images/nature-4.jpg" />
+        </div>
+        <div class="swiper-slide">
+          <div class="j"><p class="j1">我是图片5</p></div>
+          <img src="./images/nature-5.jpg" />
+        </div>
+        <div class="swiper-slide">
+          <div class="j"><p class="j1">我是图片6</p></div>
+          <img src="./images/nature-6.jpg" />
+        </div>
+        <div class="swiper-slide">
+          <div class="j"><p class="j1">我是图片7</p></div>
+          <img src="./images/nature-7.jpg" />
+        </div>
+        <div class="swiper-slide">
+          <div class="j"><p class="j1">我是图片8</p></div>
+          <img src="./images/nature-8.jpg" />
+        </div>
+        <div class="swiper-slide">
+          <div class="j"><p class="j1">我是图片9</p></div>
+          <img src="./images/nature-9.jpg" />
+        </div>
+        <div class="swiper-slide">
+          <div class="j"><p class="j1">我是图片10</p></div>
+          <img src="./images/nature-10.jpg" />
+        </div>
+      </div>
+    </div>
+    <div thumbsSlider="" class="swiper mySwiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <img src="./images/nature-1.jpg" />
+          <div class="w11">
+            <p class="w1">蚂蚁</p>
+          </div>
+        </div>
+
+        <div class="swiper-slide">
+          <img src="./images/nature-2.jpg" />
+          <div class="w11">
+            <p class="w1">湖水</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <img src="./images/nature-3.jpg" />
+          <div class="w11">
+            <p class="w1">海洋</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <img src="./images/nature-4.jpg" />
+          <div class="w11">
+            <p class="w1">树#</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <img src="./images/nature-5.jpg" />
+          <div class="w11">
+            <p class="w1">太阳</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <img src="./images/nature-6.jpg" />
+          <div class="w11">
+            <p class="w1">花花</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <img src="./images/nature-7.jpg" />
+          <div class="w11">
+            <p class="w1">花儿</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <img src="./images/nature-8.jpg" />
+          <div class="w11">
+            <p class="w1">白云</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <img src="./images/nature-9.jpg" />
+          <div class="w11">
+            <p class="w1">大树</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <img src="./images/nature-10.jpg" />
+          <div class="w11">
+            <p class="w1">露水</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Swiper JS -->
+    <script src="../swiper-bundle.min.js"></script>
+
+    <!-- Initialize Swiper -->
+    <script>
+      var swiper = new Swiper(".mySwiper", {
+        loop: true,
+        spaceBetween: 10,
+        slidesPerView: 4,
+        freeMode: true,
+        watchSlidesProgress: true,
+      });
+      var swiper2 = new Swiper(".mySwiper2", {
+        loop: true,
+        spaceBetween: 10,
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+        thumbs: {
+          swiper: swiper,
+        },
+      });
+    </script>
+    <script>
+      document.getElementById("cha").addEventListener("click", function () {
+        window.location.replace("./images/nature-1.jpg"); //替换当前文档
+      });
+    </script>
+  </body>
+</html>

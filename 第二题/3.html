@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  </head>
+  <style>
+    .a button {
+      background-color: white;
+      border-radius: 10px;
+      border: none;
+    }
+    .a {
+      position: absolute;
+      top: 75px;
+      right: 10px;
+    }
+    #main {
+      margin-top: 100px;
+      margin-left: 576px;
+    }
+
+    .box {
+      border: 1px gray solid;
+      border-radius: 10px;
+      height: 860px;
+      width: 100%;
+      background-color: skyblue;
+    }
+    #b {
+      background-color: blue;
+      color: white;
+    }
+    .k {
+      border: 1px gray solid;
+      border-radius: 10px;
+      height: 100px;
+      width: 200px;
+      background-color: white;
+      position: absolute;
+      left: 56px;
+      top: 217px;
+    }
+    .kk {
+      border: 1px gray solid;
+      border-radius: 10px;
+      height: 100px;
+      width: 200px;
+      background-color: white;
+      position: absolute;
+      left: 56px;
+      top: 340px;
+    }
+    .k p {
+      margin-left: 10px;
+    }
+    .k h1 {
+      margin-left: 10px;
+    }
+    .kk p {
+      margin-left: 10px;
+    }
+    .kk h1 {
+      margin-left: 10px;
+    }
+  </style>
+  <body>
+    <div class="box">
+      <h1>浏览量分析</h1>
+      <div class="k">
+        <p>PV(总浏览量)</p>
+        <h1>305</h1>
+      </div>
+      <div class="kk">
+        <p>UV(总访问量)</p>
+        <h1>0</h1>
+      </div>
+      <div class="a">
+        <button id="a">今天</button>
+        <button id="b">昨天</button>
+        <button id="c">近7日</button>
+        <button id="d">近30日</button>
+      </div>
+      <div id="main" style="width: 1100px; height: 700px"></div>
+    </div>
+    <script src="./echarts.js"></script>
+    <script>
+      var chartDom = document.getElementById("main");
+      var myChart = echarts.init(chartDom);
+      var option;
+      // 基于准备好的dom，初始化echarts实例
+      var resData = [
+        { year: "00:00", yearAmount: 0 },
+
+        { year: "02:00", yearAmount: 0 },
+        { year: "03:00", yearAmount: 0 },
+        { year: "04:00", yearAmount: 5 },
+        { year: "05:00", yearAmount: 42 },
+
+        { year: "07:00", yearAmount: 5 },
+        { year: "08:00", yearAmount: 12 },
+        { year: "09:00", yearAmount: 7 },
+        { year: "10:00", yearAmount: 15 },
+
+        { year: "12:00", yearAmount: 50 },
+
+        { year: "14:00", yearAmount: 5 },
+        { year: "15:00", yearAmount: 8 },
+        { year: "16:00", yearAmount: 10 },
+        { year: "17:00", yearAmount: 0 },
+        { year: "18:00", yearAmount: 5 },
+        { year: "19:00", yearAmount: 35 },
+        { year: "20:00", yearAmount: 5 },
+        { year: "21:00", yearAmount: 0 },
+        { year: "22:00", yearAmount: 0 },
+      ];
+      var data = { year: [], num: [] };
+      for (var i = 0; i < resData.length; i++) {
+        data.year.push(resData[i].year);
+        data.num.push(resData[i].yearAmount);
+      }
+      option = {
+        backgroundColor: "#fff",
+        tooltip: {
+          trigger: "axis",
+          axisPointer: {
+            lineStyle: {
+              color: {
+                type: "linear",
+                x: 0,
+                y: 0,
+                colorStops: [
+                  {
+                    offset: 0,
+                    color: "#dcdcdc", // 0% 处的颜色
+                  },
+                  {
+                    offset: 1,
+                    color: "#dcdcdc", // 100% 处的颜色
+                  },
+                ],
+                global: false, // 缺省为 false
+              },
+            },
+          },
+        },
+        grid: {
+          top: "12%",
+          left: "8%",
+          right: "5%",
+          bottom: "5%",
+          // containLabel: true
+        },
+        legend: {
+          show: true,
+          right: "5%",
+          top: "3%",
+          itemWidth: 20,
+          itemHeight: 10,
+          itemStyle: {
+            color: "#fff",
+            borderColor: "#427DF3",
+            borderWidth: 2,
+          },
+        },
+        xAxis: [
+          {
+            type: "category",
+            boundaryGap: false,
+            axisLine: {
+              //坐标轴轴线相关设置。数学上的x轴
+              show: true,
+              lineStyle: {
+                color: "#dcdcdc",
+              },
+            },
+            splitLine: {
+              show: false,
+              lineStyle: {
+                color: "#dcdcdc",
+                type: "dashed",
+              },
+            },
+            axisLabel: {
+              //坐标轴刻度标签的相关设置
+              textStyle: {
+                color: "#606266",
+                margin: 15,
+              },
+              // formatter: function(data) {
+              //     return data + "年"
+              // }
+            },
+            axisTick: {
+              show: false,
+            },
+            data: data.year,
+          },
+        ],
+        yAxis: [
+          {
+            min: 0,
+            minInterval: 1,
+            splitLine: {
+              show: true,
+              lineStyle: {
+                color: "#d9d9d9",
+                type: "dashed",
+              },
+            },
+            axisLine: {
+              show: false,
+            },
+            axisLabel: {
+              show: true,
+              textStyle: {
+                color: "#cdcdcd",
+              },
+            },
+            axisTick: {
+              show: false,
+            },
+          },
+        ],
+        series: [
+          {
+            name: "pv",
+
+            type: "line",
+            smooth: true,
+            symbol: "circle", // 默认是空心圆（中间是白色的），改成实心圆
+            showAllSymbol: true,
+            symbolSize: 10,
+            lineStyle: {
+              normal: {
+                color: "#427DF3", // 线条颜色
+              },
+            },
+            itemStyle: {
+              color: "#fff",
+              borderColor: "#427DF3",
+              borderWidth: 2,
+            },
+            label: {
+              normal: {
+                show: false,
+              },
+            },
+            tooltip: {
+              show: true,
+            },
+            areaStyle: {
+              //区域填充样式
+              normal: {
+                color: new echarts.graphic.LinearGradient(
+                  0,
+                  0,
+                  0,
+                  1,
+                  [
+                    {
+                      offset: 0,
+                      color: "#427DF3",
+                    },
+                    {
+                      offset: 1,
+                      color: "#fff",
+                    },
+                  ],
+                  false
+                ),
+              },
+            },
+            data: data.num,
+          },
+        ],
+      };
+      option && myChart.setOption(option);
+      document.getElementById("a").addEventListener("click", function () {
+        window.location.replace("2.html"); //替换当前文档
+      });
+      document.getElementById("c").addEventListener("click", function () {
+        window.location.replace("4.html"); //替换当前文档
+      });
+      document.getElementById("d").addEventListener("click", function () {
+        window.location.replace("5.html"); //替换当前文档
+      });
+    </script>
+  </body>
+</html>
